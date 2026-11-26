@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consulta Individual — Produtividade (Cód. 409)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="topo">
+      <div>
+        <h1>Produtividade Individual</h1>
+        <p>Consulta Online por Login — Somente Executados (Cód. 409)</p>
+      </div>
+    </header>
+
+    <section class="painel">
+      <form id="formBuscaLogin" class="busca-login">
+        <label for="inputLogin">Digite seu Login:</label>
+        <div class="input-grupo">
+          <input
+            type="text"
+            id="inputLogin"
+            placeholder="Ex.: Z135887"
+            autocomplete="off"
+            required
+          />
+          <button type="submit" id="btnConsultar" class="btn-primario">Consultar</button>
+        </div>
+        <small id="mensagemErro" class="erro"></small>
+      </form>
+
+      <div id="resultadoColaborador" class="resultado oculto">
+        <div class="perfil">
+          <h2 id="colabNome">—</h2>
+          <span id="colabLoginBadge" class="badge">Login: —</span>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <span class="card-titulo">Total Executado (409)</span>
+            <strong id="colabTotal" class="card-valor">—</strong>
+          </div>
+          <div class="card">
+            <span class="card-titulo">Dias Trabalhados</span>
+            <strong id="colabDias" class="card-valor">—</strong>
+          </div>
+          <div class="card">
+            <span class="card-titulo">Média por Dia</span>
+            <strong id="colabMedia" class="card-valor">—</strong>
+          </div>
+        </div>
+
+        <div class="box-branco">
+          <h3>Detalhamento da Produção Executada (Cód. 409)</h3>
+          <p class="subdescricao">
+            Instalação e Mudança de Endereço separados; Serviços (4 itens): Retorno Credenciada, Mudança de Pacote, Troca Terminal e Modernização. Apoio a outro técnico não entra.
+          </p>
+
+          <div class="resumo-numeros">
+            <div class="mini-card">
+              <span>Instalação</span>
+              <strong id="colabInst">0</strong>
+            </div>
+            <div class="mini-card">
+              <span>Mudança de Endereço</span>
+              <strong id="colabMudEnd">0</strong>
+            </div>
+            <div class="mini-card">
+              <span>Serviços (4 itens)</span>
+              <strong id="colabServicos">0</strong>
+            </div>
+          </div>
+
+          <div id="colabBarras"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="config-supabase.js"></script>
+  <script src="consulta.js"></script>
+</body>
+</html>

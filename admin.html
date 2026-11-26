@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administração — Importação de Produtividade</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="topo">
+      <div>
+        <h1>Painel do Administrador</h1>
+        <p>Importação Online de .xlsx, Dias Trabalhados e Nomes por Login</p>
+      </div>
+    </header>
+
+    <section id="boxLoginAdmin" class="box-branco">
+      <h2>Acesso do Administrador</h2>
+      <p class="subdescricao">Informe o PIN para importar planilhas e vincular nomes aos logins.</p>
+      <form id="formPinAdmin" class="input-grupo">
+        <input type="password" id="inputPin" placeholder="PIN (padrão: 1234)" required />
+        <button type="submit" class="btn-primario">Entrar</button>
+      </form>
+      <small id="erroPin" class="erro"></small>
+    </section>
+
+    <section id="painelAdminConteudo" class="oculto">
+      <div class="box-branco">
+        <div class="cabecalho-box">
+          <div>
+            <h2>Importar Planilha de Atividades (.xlsx)</h2>
+            <p class="subdescricao">
+              Salva na nuvem por data (sem duplicar o mesmo dia se reimportado) e contabiliza dias trabalhados por login.
+            </p>
+          </div>
+          <button id="btnLimparTudo" class="btn-perigo" type="button">
+            Limpar Dados da Nuvem
+          </button>
+        </div>
+
+        <div class="importacao-box">
+          <input type="file" id="inputArquivoXlsx" accept=".xlsx,.xls" />
+          <small class="dica-colunas">
+            Cód. 409 | Separa: Instalacao e Mudanca de Endereco | Serviços (4 itens): Retorno Credenciada, Mudanca de Pacote, Troca Terminal, Modernizacao | Ignora Apoio a outro tecnico.
+          </small>
+        </div>
+
+        <p id="feedbackImportacao" class="sucesso"></p>
+        <p id="erroImportacao" class="erro"></p>
+      </div>
+
+      <div class="box-branco">
+        <h2>Nomes e Média por Login</h2>
+        <p class="subdescricao">
+          Preencha o nome correspondente a cada login e salve no Supabase.
+        </p>
+
+        <div class="tabela-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Login</th>
+                <th>Nome do Técnico</th>
+                <th>Dias Trab.</th>
+                <th>Instalação</th>
+                <th>Mud. Endereço</th>
+                <th>Serviços (4)</th>
+                <th>Total (409)</th>
+                <th>Média/Dia</th>
+              </tr>
+            </thead>
+            <tbody id="corpoTabelaAdmin"></tbody>
+          </table>
+        </div>
+
+        <div class="acoes-form">
+          <button id="btnSalvarNomes" class="btn-primario" type="button">
+            Salvar Nomes
+          </button>
+        </div>
+        <p id="feedbackNomes" class="sucesso"></p>
+      </div>
+    </section>
+  </div>
+
+  <script src="config-supabase.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
